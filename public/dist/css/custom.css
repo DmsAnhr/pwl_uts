@@ -1,0 +1,9 @@
+.box-btn-action{
+    text-align-last: center;
+    display: flex;
+    justify-content: center;
+}
+
+.box-btn-action *{
+    margin: 0 5px;
+}
