@@ -27,7 +27,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ url('content/barang/create') }}" class="btn btn-success btn-sm">
+                            <a href="{{ url('barang/create') }}" class="btn btn-success btn-sm">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Add New
                             </a>
                             <table class="table">
@@ -41,54 +41,60 @@
                                                 aria-hidden="true"></i></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {{-- @if ($brg->count() > 0)
-                                        @foreach ($brg as $i => $b)
+                                @if ($brg->count() > 0)
+                                    @foreach ($brg as $no => $b)
+                                    <tbody>
+                                        {{-- @if ($brg->count() > 0)
+                                            @foreach ($brg as $i => $b)
+                                                <tr>
+                                                    <td>{{ $i + 1 }}</td>
+                                                    <td>{{ $b->nama }}</td>
+                                                    <td>{{ $b->jenis }}</td>
+                                                    <td>{{ $b->warna }}</td>
+                                                    <td class="box-btn-action">
+                                                        <a href=href={{ url('/barang/' . $b->id . '/edit') }}
+                                                             type="button" class="btn btn-sm btn-warning text-white">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </a>
+                                                        <form method="POST" action="{{ url('/barang/' . $b->id) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="btn btn-sm btn-danger">
+                                                                <i class="fas fa-trash"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
                                             <tr>
-                                                <td>{{ $i + 1 }}</td>
-                                                <td>{{ $b->nama }}</td>
-                                                <td>{{ $b->jenis }}</td>
-                                                <td>{{ $b->warna }}</td>
-                                                <td class="box-btn-action">
-                                                    <a href=href={{ url('/barang/' . $b->id . '/edit') }}
-                                                         type="button" class="btn btn-sm btn-warning text-white">
+                                                <td colspan="6" style="text-align:center;">Belum Ada Data</td>
+                                            </tr>
+                                        @endif --}}
+                                        <tr>
+                                            <td>{{$no+1}}</td>
+                                            <td>{{$b->nama}}</td>
+                                            <td>{{$b->jenis}}</td>
+                                            <td>{{$b->warna}} <i class="fas fa-square"
+                                                style="color: {{ isset($b) ? $b->warna : old('warna') }};"></i></td>
+                                            <td class="box-btn-action">
+                                                <form action="{{ url('/barang/'.$b->id)}}" method="POST">
+                                                    <a href="{{ url('/barang/'.$b->id.'/edit/') }}" type="button" class="btn btn-sm btn-warning text-white">
                                                         <i class="fas fa-edit"></i> Edit
                                                     </a>
-                                                    <form method="POST" action="{{ url('/barang/' . $b->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button" class="btn btn-sm btn-danger">
-                                                            <i class="fas fa-trash"></i> Delete
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @else
-                                        <tr>
-                                            <td colspan="6" style="text-align:center;">Belum Ada Data</td>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
-                                    @endif --}}
-                                    <tr>
-                                        <td>1</td>
-                                        <td>gatau</td>
-                                        <td>elektronik</td>
-                                        <td>hitam</td>
-                                        <td class="box-btn-action">
-                                            <a href="#" type="button" class="btn btn-sm btn-warning text-white">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
-                                            <form action="">
-                                                <button type="button" class="btn btn-sm btn-danger">
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" style="text-align:center;">Belum Ada Data</td>
-                                    </tr>
-                                </tbody>
+                                    </tbody>
+                                    @endforeach
+                                @else
+                                <tr><td colspan="6" class="text-center">Data Tidak Ada</td></tr>
+                                @endif
                             </table>
                         </div>
                     </div>

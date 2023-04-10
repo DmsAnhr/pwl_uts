@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('content/dashboard');
 });
-Route::get('/barang', function () {
-    return view('content/barang/barang');
-});
+
+Route::resource('/barang', BarangController::class)->parameter('barang', 'id');
+
 Route::get('/pengiriman', function () {
     return view('content/pengiriman/pengiriman');
 });
