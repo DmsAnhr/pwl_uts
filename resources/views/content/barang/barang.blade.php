@@ -44,33 +44,6 @@
                                 @if ($brg->count() > 0)
                                     @foreach ($brg as $no => $b)
                                     <tbody>
-                                        {{-- @if ($brg->count() > 0)
-                                            @foreach ($brg as $i => $b)
-                                                <tr>
-                                                    <td>{{ $i + 1 }}</td>
-                                                    <td>{{ $b->nama }}</td>
-                                                    <td>{{ $b->jenis }}</td>
-                                                    <td>{{ $b->warna }}</td>
-                                                    <td class="box-btn-action">
-                                                        <a href=href={{ url('/barang/' . $b->id . '/edit') }}
-                                                             type="button" class="btn btn-sm btn-warning text-white">
-                                                            <i class="fas fa-edit"></i> Edit
-                                                        </a>
-                                                        <form method="POST" action="{{ url('/barang/' . $b->id) }}">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="button" class="btn btn-sm btn-danger">
-                                                                <i class="fas fa-trash"></i> Delete
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr>
-                                                <td colspan="6" style="text-align:center;">Belum Ada Data</td>
-                                            </tr>
-                                        @endif --}}
                                         <tr>
                                             <td>{{$no+1}}</td>
                                             <td>{{$b->nama}}</td>

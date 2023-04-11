@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PengirimanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +22,8 @@ Route::get('/', function () {
 
 Route::resource('/barang', BarangController::class)->parameter('barang', 'id');
 
-Route::get('/pengiriman', function () {
-    return view('content/pengiriman/pengiriman');
-});
+Route::resource('/pengiriman', PengirimanController::class)->parameter('pengiriman', 'id');
+
 Route::get('/user', function () {
     return view('content/user/user');
 });

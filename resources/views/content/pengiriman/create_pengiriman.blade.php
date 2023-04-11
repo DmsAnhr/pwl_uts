@@ -30,20 +30,20 @@
                         <div class="card-body">
                             <form method="POST" action="{{ $url_form }}">
                                 @csrf
-                                {!! isset($brg) ? method_field('PUT') : '' !!}
+                                {!! isset($prn) ? method_field('PUT') : '' !!}
                                 <div class="form-group">
-                                    <label>Nama</label>
-                                    <input class="form-control @error('nama') is-invalid @enderror"
-                                        value="{{ isset($brg) ? $brg->nama : old('nama') }}" 
-                                        name="nama" type="text" />
-                                    @error('nama')
+                                    <label>Kode</label>
+                                    <input class="form-control @error('kode') is-invalid @enderror"
+                                        value="{{ isset($prn) ? $prn->kode : old('kode') }}" 
+                                        name="kode" type="text" />
+                                    @error('kode')
                                         <span class="error invalid-feedback">{{ $message }} </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Deskirpsi Isi</label>
                                     <input class="form-control @error('isi') is-invalid @enderror"
-                                        value="{{ isset($brg) ? $brg->isi : old('isi') }}" name="isi" type="text" />
+                                        value="{{ isset($prn) ? $prn->isi : old('isi') }}" name="isi" type="text" />
                                     @error('isi')
                                         <span class="error invalid-feedback">{{ $message }} </span>
                                     @enderror
@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label>Tujuan</label>
                                             <input class="form-control @error('tujuan') is-invalid @enderror"
-                                                value="{{ isset($brg) ? $brg->tujuan : old('tujuan') }}"
+                                                value="{{ isset($prn) ? $prn->tujuan : old('tujuan') }}"
                                                 name="tujuan" type="text" />
                                             @error('tujuan')
                                                 <span class="error invalid-feedback">{{ $message }} </span>
@@ -65,7 +65,7 @@
                                             <label>Berat</label>
                                             <div class="input-group">
                                                 <input class="form-control @error('berat') is-invalid @enderror"
-                                                    value="{{ isset($brg) ? $brg->berat : old('berat') }}"
+                                                    value="{{ isset($prn) ? $prn->berat : old('berat') }}"
                                                     name="berat" type="text" />
                                                 @error('berat')
                                                     <span class="error invalid-feedback">{{ $message }} </span>
