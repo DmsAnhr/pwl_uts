@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PengirimanController;
 use Illuminate\Support\Facades\Auth;
@@ -16,23 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('content/dashboard');
-});
-
-Route::resource('/barang', BarangController::class)->parameter('barang', 'id');
-
-Route::resource('/pengiriman', PengirimanController::class)->parameter('pengiriman', 'id');
-
-Route::get('/user', function () {
-    return view('content/user/user');
-});
-
-Route::get('/test', function () {
-    return view('content/test');
-});
-
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', function () {
+        return view('content/dashboard');
+    });
+
+    Route::get('/user', function () {
+        return view('content/user/user');
+    });
+
+    Route::resource('/barang', BarangController::class)->parameter('barang', 'id');
+
+    Route::resource('/pengiriman', PengirimanController::class)->parameter('pengiriman', 'id');
+});

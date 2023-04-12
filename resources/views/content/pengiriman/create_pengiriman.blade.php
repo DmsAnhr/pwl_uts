@@ -77,21 +77,15 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
                                 <div class="form-group">
                                     <button class="btn btn-sm btn-success">Save</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.row -->
-
         </div>
         <!--/. container-fluid -->
     </section>
