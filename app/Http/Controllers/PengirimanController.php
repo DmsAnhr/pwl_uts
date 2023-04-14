@@ -23,7 +23,7 @@ class PengirimanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode'   => 'required|string|max:10',
+            'kode'   => 'required|string|max:10|unique:pengiriman',
             'isi'    => 'required|string|max:30',
             'tujuan' => 'required|string|max:20',
             'berat'  => 'required|string|max:10'
