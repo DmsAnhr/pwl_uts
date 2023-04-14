@@ -51,7 +51,7 @@ class PengirimanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode'   => 'required|string|max:10',
+            'kode'   => 'required|string|max:10|unique:pengiriman,kode,'.$id,
             'isi'    => 'required|string|max:30',
             'tujuan' => 'required|string|max:20',
             'berat'  => 'required|string|max:10'
