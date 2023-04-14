@@ -29,7 +29,7 @@
                 <form action="{{url('/login')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Email">
+                        <input type="text" name="username" class="form-control" placeholder="Username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -65,7 +65,7 @@
                     <a href="forgot-password.html">forgot password?</a>
                 </p>
                 <p class="mb-0">
-                    <a href="register.html" class="text-center">Register membership</a>
+                    <a href="{{ url('register') }}" class="text-center">Register membership</a>
                 </p>
             </div>
             <!-- /.card-body -->

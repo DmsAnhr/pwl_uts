@@ -30,7 +30,7 @@
                             <a href="{{ url('pengiriman/create') }}" class="btn btn-success btn-sm">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Add New
                             </a>
-                            <table class="table">
+                            <table class="table table-all" id="tbl-pengiriman">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -44,7 +44,6 @@
                                 <tbody>
                                     @if ($prn->count() > 0)
                                     @foreach ($prn as $no => $p)
-                                    <tbody>
                                         <tr>
                                             <td>{{$no+1}}</td>
                                             <td>#{{ 
@@ -60,15 +59,37 @@
                                                         <i class="fas fa-edit"></i> Edit
                                                     </a>
                                                     @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">
-                                                        <i class="fas fa-trash"></i> Delete
-                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{$p->id}}"><i class="fas fa-trash pr-1"></i>Delete</button>
+                                                    <!-- Delete Modal -->
+                                                    <div class="modal fade" id="deleteModal{{$p->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$p->id}}" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel{{$p->id}}">Konfirmasi Hapus</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                            <p>Anda yakin ingin menghapus #{{ 
+                                                                app('App\Http\Controllers\PengirimanController')->addHyphen($p->kode)
+                                                            }} ?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                                            <form method="POST" action="{{ url('/pengiriman/'.$p->id)}}" class="d-inline pl-2">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Ya</button>
+                                                            </form>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                    @endforeach
+                                        @endforeach
                                 @else
                                 <tr><td colspan="6" class="text-center">Data Tidak Ada</td></tr>
                                 @endif

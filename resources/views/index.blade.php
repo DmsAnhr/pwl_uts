@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset ('plugins/fontawesome-free/css/all.min.css')}}">
+  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset ('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset ('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset ('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset ('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Theme style -->
@@ -55,8 +61,6 @@
 <script src="{{asset ('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset ('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset ('dist/js/adminlte.js')}}"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -70,6 +74,24 @@
 {{-- color-picker --}}
 <script src="{{asset ('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
 
+<!-- DataTables  & Plugins -->
+<script src="{{asset ('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset ('plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset ('plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset ('plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset ('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset ('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+<!-- AdminLTE App -->
+<script src="{{asset ('dist/js/adminlte.js')}}"></script>
+
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset ('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -80,6 +102,12 @@
     $('.my-colorpicker2').on('colorpickerChange', function(event) {
     $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
     })
+
+    $('#tbl-barang, #tbl-pengiriman').DataTable({
+      "searching": true,
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "iDisplayLength": 5
+    });
 </script>
 </body>
 </html>

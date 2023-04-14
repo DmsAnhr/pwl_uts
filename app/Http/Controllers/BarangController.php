@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,7 +16,7 @@ class BarangController extends Controller
     {
         $brg = BarangModel::all();
         return view('content.barang.barang')
-                    ->with('brg', $brg);
+            ->with('brg', $brg);
     }
 
     /**
@@ -27,7 +27,7 @@ class BarangController extends Controller
     public function create()
     {
         return view('content.barang.create_barang')
-                    ->with('url_form', url('barang'));
+            ->with('url_form', url('barang'));
     }
 
     /**
@@ -47,7 +47,7 @@ class BarangController extends Controller
         BarangModel::create($request->except(['_token']));
 
         return redirect('barang')
-                        ->with('success', 'Barang Berhasil Ditambahkan');
+            ->with('success', 'Barang Berhasil Ditambahkan');
     }
 
     /**
@@ -71,8 +71,8 @@ class BarangController extends Controller
     {
         $barang = BarangModel::find($id);
         return view('content.barang.create_barang')
-                    ->with('brg', $barang)
-                    ->with('url_form', url('/barang/'. $id));
+            ->with('brg', $barang)
+            ->with('url_form', url('/barang/' . $id));
     }
 
     /**
@@ -93,7 +93,7 @@ class BarangController extends Controller
         BarangModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
         return redirect('barang')
-                        ->with('success', 'Barang Berhasil Dirubah');
+            ->with('success', 'Barang Berhasil Dirubah');
     }
 
     /**
@@ -106,6 +106,6 @@ class BarangController extends Controller
     {
         BarangModel::where('id', '=', $id)->delete();
         return redirect('barang')
-                        ->with('success', 'Data Berhasil Dihapus');
+            ->with('success', 'Data Berhasil Dihapus');
     }
 }

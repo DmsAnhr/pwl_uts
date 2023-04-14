@@ -30,7 +30,7 @@
                             <a href="{{ url('content/user/create') }}" class="btn btn-success btn-sm">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Add New
                             </a>
-                            <table class="table">
+                            <table class="table table-all">
                                 <thead>
                                     <tr>
                                         <th>No</th>
