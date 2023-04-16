@@ -19,8 +19,6 @@ class BarangController extends Controller
             $data = BarangModel::select('id', 'nama','jenis','warna')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    // $btn = '<a href="javascript:void(0)" class="btn btn-primary btn-sm">View</a>';
-                    // return $btn;
                     return $this->getActionColumn($row);
                 })
                 ->rawColumns(['action'])
@@ -36,40 +34,36 @@ class BarangController extends Controller
         $formUrl = url('/barang/' . $row->id);
         $editUrl = url('/barang/' . $row->id . '/edit/');
         $actionCol = "<form action='$formUrl' method='POST'>
-        <a href='$editUrl' type='button' class='btn btn-sm btn-warning text-white'>
-            <i class='fas fa-edit'></i> Edit
-        </a>";
+                        <a href='$editUrl' type='button' class='btn btn-sm btn-warning text-white'>
+                            <i class='fas fa-edit'></i> Edit
+                        </a>";
         $actionCol .= csrf_field();
-        $actionCol .= "
-        <button type='button' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#deleteModal$row->id'><i class='fas fa-trash pr-1'></i>Delete</button>
-        <!-- Delete Modal -->
-        <div class='modal fade' id='deleteModal$row->id' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel$row->id' aria-hidden='true'>
-            <div class='modal-dialog modal-dialog-centered' role='document'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                <h5 class='modal-title' id='deleteModalLabel$row->id'>Konfirmasi Hapus</h5>
-                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                </button>
-                </div>
-                <div class='modal-body'>
-                <p>Anda yakin ingin menghapus $row->nama ?</p>
-                </div>
-                <div class='modal-footer'>
-                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
-                <form method='POST' action='$formUrl' class='d-inline pl-2'>
-                ";
-                $actionCol .= csrf_field();
-                $actionCol .= method_field('DELETE');
-        
-                $actionCol .= "
-                    <button type='submit' class='btn btn-danger'>Ya</button>
-                </form>
-                </div>
-            </div>
-            </div>
-        </div>
-    </form>";
+        $actionCol .= "<button type='button' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#deleteModal$row->id'><i class='fas fa-trash pr-1'></i>Delete</button>
+                        <!-- Delete Modal -->
+                        <div class='modal fade' id='deleteModal$row->id' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel$row->id' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered' role='document'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                <h5 class='modal-title' id='deleteModalLabel$row->id'>Konfirmasi Hapus</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                </button>
+                                </div>
+                                <div class='modal-body'>
+                                <p>Anda yakin ingin menghapus $row->nama ?</p>
+                                </div>
+                                <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
+                                <form method='POST' action='$formUrl' class='d-inline pl-2'>";
+        $actionCol .= csrf_field();
+        $actionCol .= method_field('DELETE');
+        $actionCol .= "<button type='submit' class='btn btn-danger'>Ya</button>
+                                </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>";
     
         return $actionCol;
     }

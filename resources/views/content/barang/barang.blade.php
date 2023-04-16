@@ -41,7 +41,9 @@
                                                 aria-hidden="true"></i></th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+                                    
+                                </tbody>
                                 {{-- @if ($brg->count() > 0)
                                 <tbody>
                                     @foreach ($brg as $no => $b)
