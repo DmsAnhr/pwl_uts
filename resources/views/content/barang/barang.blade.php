@@ -41,7 +41,8 @@
                                                 aria-hidden="true"></i></th>
                                     </tr>
                                 </thead>
-                                @if ($brg->count() > 0)
+                                <tbody></tbody>
+                                {{-- @if ($brg->count() > 0)
                                 <tbody>
                                     @foreach ($brg as $no => $b)
                                         <tr>
@@ -89,7 +90,7 @@
                                     </tbody>
                                 @else
                                 <tr><td colspan="6" class="text-center">Data Tidak Ada</td></tr>
-                                @endif
+                                @endif --}}
                             </table>
                         </div>
                     </div>

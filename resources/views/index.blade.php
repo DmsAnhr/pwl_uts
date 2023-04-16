@@ -103,10 +103,49 @@
     $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
     })
 
-    $('#tbl-barang, #tbl-pengiriman').DataTable({
-      "searching": true,
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "iDisplayLength": 5
+    // $('#tbl-barang').DataTable({
+    //   "searching": true,
+    //   "responsive": true, "lengthChange": false, "autoWidth": false,
+    //   "iDisplayLength": 5
+    // });
+
+    $('#tbl-pengiriman').DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "iDisplayLength": 5,
+        'processing': true,
+        'serverSide': true,
+        'ajax': "{{ route('pengiriman.index') }}",
+        'columns': [
+            { "data": null,"sortable": false, 
+              render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                        }  
+            },
+            {data: 'kode', name: 'kode'},
+            {data: 'isi', name: 'isi'},
+            {data: 'tujuan', name: 'tujuan'},
+            {data: 'berat', name: 'berat'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    });
+
+    $('#tbl-barang').DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "iDisplayLength": 5,
+        'processing': true,
+        'serverSide': true,
+        'ajax': "{{ route('barang.index') }}",
+        'columns': [
+            { "data": null,"sortable": false, 
+              render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                        }  
+            },
+            {data: 'nama', name: 'nama'},
+            {data: 'jenis', name: 'jenis'},
+            {data: 'warna', name: 'warna'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
     });
 </script>
 </body>

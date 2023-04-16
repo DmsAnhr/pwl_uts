@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::resource('/barang', BarangController::class)->parameter('barang', 'id');
-
     Route::resource('/pengiriman', PengirimanController::class)->parameter('pengiriman', 'id');
+
+    Route::get('pengiriman', [PengirimanController::class, 'index'])->name('pengiriman.index');
+    Route::get('barang', [BarangController::class, 'index'])->name('barang.index');
 });

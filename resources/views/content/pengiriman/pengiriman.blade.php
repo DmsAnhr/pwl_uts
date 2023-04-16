@@ -41,7 +41,8 @@
                                         <th style="text-align-last: center"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody></tbody>
+                                {{-- <tbody>
                                     @if ($prn->count() > 0)
                                     @foreach ($prn as $no => $p)
                                         <tr>
@@ -93,7 +94,7 @@
                                 @else
                                 <tr><td colspan="6" class="text-center">Data Tidak Ada</td></tr>
                                 @endif
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                     </div>
